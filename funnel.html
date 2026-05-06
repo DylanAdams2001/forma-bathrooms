@@ -1105,7 +1105,27 @@
       // ── Fire GTM event ──
       // if (typeof dataLayer !== 'undefined') { dataLayer.push({ event: 'lead_submitted', ...answers }); }
 
-      window.location.href = 'thankyou.html?' + new URLSearchParams({ name: answers.firstName }).toString();
+      // ── Send to GHL via webhook ──
+      const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/D33ghFJDj1NIVtrxz3Eu/webhook-trigger/0f3b3c7e-d894-4485-b815-b37d6e18a333';
+      const payload = {
+        firstName:    answers.firstName,
+        email:        answers.email,
+        phone:        answers.phone,
+        suburb:       answers.suburb,
+        bathroomType: answers.bathroomType,
+        timeline:     answers.timeline,
+        ownership:    answers.ownership,
+        budget:       answers.budget,
+        source:       'Forma Funnel'
+      };
+
+      fetch(GHL_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(() => {}).finally(() => {
+        window.location.href = 'thankyou.html?' + new URLSearchParams({ name: answers.firstName }).toString();
+      });
     }
 
     // Clear error on input change

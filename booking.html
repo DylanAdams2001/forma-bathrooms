@@ -423,8 +423,31 @@
         if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
       }
-      const firstName = document.getElementById('firstName').value.trim();
-      window.location.href = 'thankyou.html?' + new URLSearchParams({ name: firstName }).toString();
+      const firstName  = document.getElementById('firstName').value.trim();
+      const suburb     = document.getElementById('suburb').value.trim();
+      const phone      = document.getElementById('phone').value.trim();
+      const email      = document.getElementById('email').value.trim();
+      const bathroom   = document.getElementById('bathroomType').value;
+      const timeline   = document.getElementById('timeline').value;
+      const consultTime = document.getElementById('consultTime').value;
+      const notes      = document.getElementById('notes').value.trim();
+
+      // ── Send to GHL via webhook ──
+      const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/D33ghFJDj1NIVtrxz3Eu/webhook-trigger/0f3b3c7e-d894-4485-b815-b37d6e18a333';
+      fetch(GHL_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName, email, phone, suburb,
+          bathroomType:  bathroom,
+          timeline,
+          consultTime,
+          notes,
+          source: 'Forma Booking Form'
+        })
+      }).catch(() => {}).finally(() => {
+        window.location.href = 'thankyou.html?' + new URLSearchParams({ name: firstName }).toString();
+      });
     });
 
     ['firstName','suburb','phone','email','bathroomType','timeline','consultTime'].forEach(id => {
