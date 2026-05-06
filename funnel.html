@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Get Your Free Bathroom Quote — Forma Bathrooms</title>
+  <meta name="description" content="Answer 5 quick questions and get a free fixed-price bathroom quote delivered to you within 48 hours." />
+
+  <!-- PIXEL -->
+
+  <!-- GTM -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #1C1C1C;
+      --white: #F9F7F4;
+      --brass: #C9A84C;
+      --brass-dark: #a88930;
+      --brass-tint: rgba(201,168,76,0.08);
+      --brass-border: rgba(201,168,76,0.6);
+      --mid-grey: #6B6B6B;
+      --light-grey: #E8E4DF;
+      --radius: 14px;
+      --header-h: 60px;
+      --topbar-h: 56px;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      -webkit-font-smoothing: antialiased;
+      overscroll-behavior: none;
+    }
+
+    /* ─── HEADER ─── */
+    .f-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      background: rgba(249,247,244,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--light-grey);
+    }
+
+    .logo {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+    .logo span { color: var(--brass); }
+
+    .header-trust {
+      font-size: 0.8rem;
+      color: var(--mid-grey);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .header-trust .stars { color: var(--brass); letter-spacing: -1px; }
+
+    /* ─── TOP BAR (progress + nav) ─── */
+    .top-bar {
+      position: fixed;
+      top: var(--header-h);
+      left: 0; right: 0;
+      z-index: 190;
+      background: var(--white);
+      border-bottom: 1px solid var(--light-grey);
+    }
+
+    .progress-track {
+      height: 4px;
+      background: var(--light-grey);
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--brass);
+      transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 0%;
+    }
+
+    .step-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      height: 52px;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--mid-grey);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px 0;
+      transition: color 0.15s;
+    }
+    .back-btn:hover { color: var(--charcoal); }
+    .back-btn svg { width: 16px; height: 16px; }
+
+    .step-counter {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--mid-grey);
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── MAIN CONTAINER ─── */
+    .f-main {
+      padding-top: var(--header-h);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── STEPS ─── */
+    .step { display: none; flex: 1; }
+    .step.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Slide-in animation (forward) */
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(32px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    /* Slide-in animation (back) */
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-32px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .step.active.anim-forward { animation: slideInRight 0.3s cubic-bezier(0.4,0,0.2,1) forwards; }
+    .step.active.anim-back    { animation: slideInLeft  0.3s cubic-bezier(0.4,0,0.2,1) forwards; }
+
+    /* ─── INTRO STEP ─── */
+    .step-intro {
+      position: relative;
+      min-height: calc(100dvh - var(--header-h));
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .intro-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('Assets/Bathroom Asset 1.jpg');
+      background-size: cover;
+      background-position: right center;
+      transform: scale(1.04);
+      animation: kenBurns 12s ease forwards;
+    }
+    @keyframes kenBurns {
+      from { transform: scale(1.04); }
+      to   { transform: scale(1); }
+    }
+    .intro-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(28,28,28,0.55) 0%,
+        rgba(28,28,28,0.65) 60%,
+        rgba(28,28,28,0.8) 100%
+      );
+    }
+
+    .intro-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 48px 24px 64px;
+      max-width: 560px;
+      width: 100%;
+    }
+
+    .intro-badge {
+      display: inline-block;
+      background: rgba(201,168,76,0.18);
+      border: 1px solid rgba(201,168,76,0.45);
+      color: var(--brass);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: 100px;
+      margin-bottom: 22px;
+    }
+
+    .intro-content h1 {
+      font-size: clamp(1.9rem, 5vw, 3rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+
+    .intro-content p {
+      font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+      color: rgba(255,255,255,0.82);
+      line-height: 1.6;
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+
+    .btn-start {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--brass);
+      color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 18px 36px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: -0.01em;
+    }
+    .btn-start:hover { background: var(--brass-dark); transform: translateY(-2px); }
+    .btn-start svg { width: 20px; height: 20px; }
+
+    .intro-trust {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .intro-stars {
+      color: var(--brass);
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    .intro-trust p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      margin: 0;
+    }
+
+    .intro-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+    .intro-chip {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.85);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    /* ─── QUESTION STEP CARD ─── */
+    .step-q {
+      padding-top: var(--topbar-h);
+      align-items: center;
+      justify-content: flex-start;
+      padding-bottom: 40px;
+    }
+    @media (min-height: 700px) {
+      .step-q { justify-content: center; }
+    }
+
+    .q-card {
+      width: 100%;
+      max-width: 520px;
+      padding: 32px 20px 24px;
+      margin: 0 auto;
+    }
+    @media (min-width: 600px) { .q-card { padding: 40px 32px; } }
+
+    .q-icon {
+      font-size: 2.4rem;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .q-card h2 {
+      font-size: clamp(1.3rem, 3.5vw, 1.75rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      color: var(--charcoal);
+    }
+
+    .q-sub {
+      font-size: 0.9rem;
+      color: var(--mid-grey);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    /* ─── OPTION BUTTONS ─── */
+    .opts {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .opt {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #fff;
+      border: 1.5px solid var(--light-grey);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      transition: border-color 0.18s, background 0.18s, transform 0.12s;
+      min-height: 68px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .opt:hover {
+      border-color: var(--brass-border);
+      background: var(--brass-tint);
+      transform: translateY(-1px);
+    }
+    .opt:active { transform: translateY(0); }
+    .opt.selected {
+      border-color: var(--brass);
+      background: rgba(201,168,76,0.1);
+    }
+
+    .opt-emoji {
+      font-size: 1.5rem;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 32px;
+      text-align: center;
+    }
+
+    .opt-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .opt-text strong {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.3;
+    }
+    .opt-text small {
+      font-size: 0.78rem;
+      color: var(--mid-grey);
+      font-weight: 400;
+    }
+
+    .opt-arrow {
+      font-size: 1rem;
+      color: var(--light-grey);
+      flex-shrink: 0;
+      transition: color 0.18s, transform 0.18s;
+    }
+    .opt:hover .opt-arrow { color: var(--brass); transform: translateX(3px); }
+    .opt.selected .opt-arrow { color: var(--brass); }
+
+    /* check mark on selected */
+    .opt.selected .opt-arrow-inner { display: none; }
+    .opt.selected .opt-check { display: block; }
+    .opt-check { display: none; color: var(--brass); }
+    .opt-check svg { width: 18px; height: 18px; }
+
+    /* ─── INLINE NOTE (budget soft filter) ─── */
+    .inline-note {
+      background: rgba(201,168,76,0.08);
+      border: 1.5px solid rgba(201,168,76,0.35);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+    .inline-note p {
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+    .btn-note-continue {
+      background: var(--charcoal);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-note-continue:hover { background: #333; }
+
+    /* ─── INPUT STEPS ─── */
+    .input-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .f-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .f-field label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+    .f-field label .req { color: var(--brass); margin-left: 2px; }
+
+    .f-field input {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      color: var(--charcoal);
+      background: #fff;
+      border: 1.5px solid var(--light-grey);
+      border-radius: 10px;
+      padding: 14px 16px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.18s, box-shadow 0.18s;
+      -webkit-appearance: none;
+    }
+    .f-field input:focus {
+      border-color: var(--brass);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.14);
+    }
+    .f-field input.err { border-color: #D94F4F; }
+    .f-field input::placeholder { color: #CCCCCC; }
+
+    .f-err {
+      font-size: 0.78rem;
+      color: #D94F4F;
+      display: none;
+    }
+    .f-err.show { display: block; }
+
+    .btn-continue {
+      background: var(--brass);
+      color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 16px 24px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 4px;
+    }
+    .btn-continue:hover { background: var(--brass-dark); transform: translateY(-1px); }
+
+    .privacy-note {
+      font-size: 0.78rem;
+      color: var(--mid-grey);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* ─── DISQUALIFY ─── */
+    .step-disq {
+      padding-top: calc(var(--topbar-h) + 20px);
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 40px;
+    }
+
+    .disq-card {
+      max-width: 440px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .disq-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .disq-card h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    .disq-card p {
+      font-size: 0.95rem;
+      color: var(--mid-grey);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .btn-disq-home {
+      display: inline-block;
+      background: var(--charcoal);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      margin-top: 24px;
+      transition: background 0.2s;
+    }
+    .btn-disq-home:hover { background: #333; }
+
+    .btn-disq-back {
+      display: block;
+      margin-top: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: var(--mid-grey);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .btn-disq-back:hover { color: var(--charcoal); }
+
+    /* ─── TESTIMONIAL STRIP (shown on steps 5-6) ─── */
+    .proof-strip {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 0 20px 8px;
+      width: 100%;
+    }
+    @media (min-width: 600px) { .proof-strip { padding: 0 32px 8px; } }
+
+    .proof-inner {
+      background: rgba(201,168,76,0.07);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .proof-photo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: var(--light-grey);
+      overflow: hidden;
+    }
+    .proof-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .proof-text {
+      flex: 1;
+    }
+    .proof-stars { color: var(--brass); font-size: 0.75rem; letter-spacing: 1px; margin-bottom: 4px; }
+    .proof-quote {
+      font-size: 0.82rem;
+      color: var(--charcoal);
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .proof-name {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--mid-grey);
+      margin-top: 5px;
+    }
+
+    /* ─── SOCIAL PROOF TICKER ─── */
+    .proof-ticker {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--mid-grey);
+      padding: 8px 0 0;
+    }
+    .proof-ticker strong { color: var(--charcoal); }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="f-header">
+    <a href="index.html" class="logo">Forma <span>Bathrooms</span></a>
+    <div class="header-trust">
+      <span class="stars">★★★★★</span>
+      <span>Melbourne homeowners</span>
+    </div>
+  </header>
+
+  <!-- TOP BAR (hidden on intro, shown on Q steps) -->
+  <div id="topBar" class="top-bar" style="display:none">
+    <div class="progress-track">
+      <div id="progressFill" class="progress-fill"></div>
+    </div>
+    <div class="step-nav">
+      <button id="backBtn" class="back-btn" onclick="goBack()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        Back
+      </button>
+      <span id="stepCounter" class="step-counter">Step 1 of 6</span>
+    </div>
+  </div>
+
+  <main class="f-main">
+
+    <!-- ── STEP 0: INTRO ── -->
+    <div id="step-0" class="step step-intro active">
+      <div class="intro-bg"></div>
+      <div class="intro-content">
+        <div class="intro-badge">Free In-Home Consultation</div>
+        <h1>Finally, A Bathroom You're&nbsp;Actually Proud Of.</h1>
+        <p>Answer 5 quick questions and we'll come to you with a free, fixed-price quote — delivered within 48&nbsp;hours.</p>
+        <button class="btn-start" onclick="advance(1)">
+          Get My Free Quote
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </button>
+        <div class="intro-trust">
+          <span class="intro-stars">★★★★★</span>
+          <p>Trusted by Melbourne homeowners</p>
+          <div class="intro-chips">
+            <span class="intro-chip">✓ Fixed-price guarantee</span>
+            <span class="intro-chip">✓ Quote in 48 hours</span>
+            <span class="intro-chip">✓ Zero obligation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STEP 1: What's going on? ── -->
+    <div id="step-1" class="step step-q">
+      <div class="q-card">
+        <div class="q-icon">🛁</div>
+        <h2>What best describes your bathroom right now?</h2>
+        <p class="q-sub">Pick the one that fits best — we've seen it all.</p>
+        <div class="opts">
+          <button class="opt" data-field="bathroomType" data-value="dated" onclick="selectOpt(this)">
+            <span class="opt-emoji">😬</span>
+            <span class="opt-text">
+              <strong>Dated &amp; embarrassing</strong>
+              <small>Still looks like the 90s</small>
+            </span>
+            <span class="opt-arrow"><span class="opt-arrow-inner">→</span><span class="opt-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></span>
+          </button>
+          <button class="opt" data-field="bathroomType" data-value="damaged" onclick="selectOpt(this)">
+            <span class="opt-emoji">💧</span>
+            <span class="opt-text">
+              <strong>Water damaged or mouldy</strong>
+              <small>Needs urgent attention</small>
+            </span>
+            <span class="opt-arrow"><span class="opt-arrow-inner">→</span><span class="opt-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></span>
+          </button>
+          <button class="opt" data-field="bathroomType" data-value="ugly" onclick="selectOpt(this)">
+            <span class="opt-emoji">🙄</span>
+            <span class="opt-text">
+              <strong>Functional but ugly</strong>
+              <small>Works fine, just not nice</small>
+            </span>
+            <span class="opt-arrow"><span class="opt-arrow-inner">→</span><span class="opt-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></span>
+          </button>
+          <button class="opt" data-field="bathroomType" data-value="redesign" onclick="selectOpt(this)">
+            <span class="opt-emoji">✨</span>
+            <span class="opt-text">
+              <strong>Ready for a full redesign</strong>
+              <small>I know what I want</small>
+            </span>
+            <span class="opt-arrow"><span class="opt-arrow-inner">→</span><span class="opt-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STEP 2: Timeline ── -->
+    <div id="step-2" class="step step-q">
+      <div class="q-card">
+        <div class="q-icon">📅</div>
+        <h2>How soon are you hoping to get started?</h2>
+        <p class="q-sub">This helps us prioritise your consultation slot.</p>
+        <div class="opts">
+          <button class="opt" data-field="timeline" data-value="asap" onclick="selectOpt(this)">
+            <span class="opt-emoji">🔥</span>
+            <span class="opt-text">
+              <strong>ASAP — I'm ready to move</strong>
+              <small>Let's get this done</small>
+            </span>
+            <span class="opt-arrow"><span class="opt-arrow-inner">→</span><span class="opt-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></span>
+          </button>
+          <button class="opt" data-field="timeline" data-value="1-3months" onclick="selectOpt(this)">
+            <span class="opt-emoji">📆</span>
+            <span class="opt-text">
+              <strong>Within 1–3 months</strong>
+              <small>Planning ahead</small>
+            </span>
+            <span class="opt-arrow"><span class="opt-arrow-inner">→</span><span class="opt-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></span>
+          </button>
+          <button class="opt" data-field="timeline" data-value="3-6months" onclick="selectOpt(this)">
+            <span class="opt-emoji">🗓️</span>
+            <span class="opt-text">
+              <strong>3–6 months from now</strong>
+              <small>No rush, just planning</small>
+            </span>
+            <span class="opt-arrow"><span class="opt-arrow-inner">→</span><span class="opt-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></span>
+          </button>
+          <button class="opt" data-field="timeline" data-value="exploring" onclick="selectOpt(this)">
+            <span class="opt-emoji">👀</span>
+            <span class="opt-text">
+              <strong>Just exploring for now</strong>
+              <small>Getting ideas</small>
+            </span>
+            <span class="opt-arrow"><span class="opt-arrow-inner">→</span><span class="opt-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STEP 3: Ownership ── -->
+    <div id="step-3" class="step step-q">
+      <div class="q-card">
+        <div class="q-icon">🏠</div>
+        <h2>Is this your own property?</h2>
+        <p class="q-sub">We want to make sure we're actually able to help you.</p>
+        <div class="opts">
+          <button class="opt" data-field="ownership" data-value="owner" onclick="selectOpt(this)">
+            <span class="opt-emoji">✅</span>
+            <span class="opt-text">
+              <strong>Yes — I own the home</strong>
+              <small>It's my primary residence</small>
+            </span>
+            <span class="opt-arrow"><span class="opt-arrow-inner">→</span><span class="opt-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></span>
+          </button>
+          <button class="opt" data-field="ownership" data-value="investor" onclick="selectOpt(this)">
+            <span class="opt-emoji">🏢</span>
+            <span class="opt-text">
+              <strong>Yes — I'm the landlord</strong>
+              <small>Investment or rental property</small>
+            </span>
+            <span class="opt-arrow"><span class="opt-arrow-inner">→</span><span class="opt-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></span>
+          </button>
+          <button class="opt" data-field="ownership" data-value="tenant" onclick="selectOpt(this)">
+            <span class="opt-emoji">🔑</span>
+            <span class="opt-text">
+              <strong>No — I'm a tenant</strong>
+              <small>I rent the property</small>
+            </span>
+            <span class="opt-arrow"><span class="opt-arrow-inner">→</span><span class="opt-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STEP 4: Budget ── -->
+    <div id="step-4" class="step step-q">
+      <div class="q-card">
+        <div class="q-icon">💰</div>
+        <h2>What's your approximate budget for this renovation?</h2>
+        <p class="q-sub">No right or wrong — this helps us tailor your quote.</p>
+        <div id="budgetNote" class="inline-note" style="display:none">
+          <p>Our projects typically start from $12,000. We'd still love to come out — you might be surprised what's possible, and our assessment is completely free.</p>
+          <button class="btn-note-continue" onclick="budgetContinue()">Continue anyway →</button>
+        </div>
+        <div id="budgetOpts" class="opts">
+          <button class="opt" data-field="budget" data-value="under-10k" onclick="selectBudget(this,'under-10k')">
+            <span class="opt-emoji">💵</span>
+            <span class="opt-text">
+              <strong>Under $10,000</strong>
+              <small>Refresh or small changes</small>
+            </span>
+            <span class="opt-arrow"><span class="opt-arrow-inner">→</span><span class="opt-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></span>
+          </button>
+          <button class="opt" data-field="budget" data-value="10-25k" onclick="selectBudget(this,'10-25k')">
+            <span class="opt-emoji">💰</span>
+            <span class="opt-text">
+              <strong>$10,000 – $25,000</strong>
+              <small>Mid-range renovation</small>
+            </span>
+            <span class="opt-arrow"><span class="opt-arrow-inner">→</span><span class="opt-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></span>
+          </button>
+          <button class="opt" data-field="budget" data-value="25-50k" onclick="selectBudget(this,'25-50k')">
+            <span class="opt-emoji">💎</span>
+            <span class="opt-text">
+              <strong>$25,000 – $50,000</strong>
+              <small>Full renovation</small>
+            </span>
+            <span class="opt-arrow"><span class="opt-arrow-inner">→</span><span class="opt-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></span>
+          </button>
+          <button class="opt" data-field="budget" data-value="50k+" onclick="selectBudget(this,'50k+')">
+            <span class="opt-emoji">🏆</span>
+            <span class="opt-text">
+              <strong>$50,000+</strong>
+              <small>Premium transformation</small>
+            </span>
+            <span class="opt-arrow"><span class="opt-arrow-inner">→</span><span class="opt-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STEP 5: Name + Suburb ── -->
+    <div id="step-5" class="step step-q">
+      <div class="proof-strip">
+        <div class="proof-inner">
+          <div class="proof-photo">
+            <img src="Assets/Bathroom Asset 3.png" alt="Before and after" style="object-position: right center;" />
+          </div>
+          <div class="proof-text">
+            <div class="proof-stars">★★★★★</div>
+            <p class="proof-quote">"Placeholder — replace with first real review."</p>
+            <p class="proof-name">Sarah M., Hawthorn</p>
+          </div>
+        </div>
+      </div>
+      <div class="q-card">
+        <div class="q-icon">📍</div>
+        <h2>Almost there — where should we come to you?</h2>
+        <p class="q-sub">We'll confirm we service your area.</p>
+        <div class="input-stack">
+          <div class="f-field">
+            <label for="iFirstName">Your first name <span class="req">*</span></label>
+            <input type="text" id="iFirstName" placeholder="e.g. Sarah" autocomplete="given-name" />
+            <span class="f-err" id="errFirstName">Please enter your first name.</span>
+          </div>
+          <div class="f-field">
+            <label for="iSuburb">Your suburb <span class="req">*</span></label>
+            <input type="text" id="iSuburb" placeholder="e.g. Hawthorn" />
+            <span class="f-err" id="errSuburb">Please enter your suburb.</span>
+          </div>
+          <button class="btn-continue" onclick="step5Next()">Continue →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STEP 6: Contact ── -->
+    <div id="step-6" class="step step-q">
+      <div class="proof-strip">
+        <div class="proof-inner">
+          <div class="proof-photo">
+            <img src="Assets/Bathroom Asset 2.webp" alt="" />
+          </div>
+          <div class="proof-text">
+            <div class="proof-stars">★★★★★</div>
+            <p class="proof-quote">"Placeholder — replace with first real review."</p>
+            <p class="proof-name">James T., Brighton</p>
+          </div>
+        </div>
+      </div>
+      <div class="q-card">
+        <div class="q-icon">📲</div>
+        <h2 id="h2Step6">Last step — how do we reach you?</h2>
+        <p class="q-sub">We'll call to lock in a time that suits you. Takes two minutes.</p>
+        <div class="input-stack">
+          <div class="f-field">
+            <label for="iPhone">Phone number <span class="req">*</span></label>
+            <input type="tel" id="iPhone" placeholder="04xx xxx xxx" autocomplete="tel" />
+            <span class="f-err" id="errPhone">Please enter your phone number.</span>
+          </div>
+          <div class="f-field">
+            <label for="iEmail">Email address <span class="req">*</span></label>
+            <input type="email" id="iEmail" placeholder="you@example.com" autocomplete="email" />
+            <span class="f-err" id="errEmail">Please enter a valid email address.</span>
+          </div>
+          <button class="btn-continue" onclick="submitForm()">Send My Free Quote Request →</button>
+          <p class="privacy-note">🔒 Your details are only used to arrange your free consultation.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── DISQUALIFY: Tenant ── -->
+    <div id="step-disqualify" class="step step-disq">
+      <div class="disq-card">
+        <div class="disq-icon">🏠</div>
+        <h2>We work with homeowners and landlords only.</h2>
+        <p>Bathroom renovations need sign-off from the property owner. Unfortunately that's not something we can arrange through a tenant.</p>
+        <p>If your situation changes, or you'd like to pass our details on to your landlord, we'd love to help.</p>
+        <a href="index.html" class="btn-disq-home">← Back to Forma Bathrooms</a>
+        <button class="btn-disq-back" onclick="goBack()">Wait — I made a mistake, go back</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // ── State ──
+    const answers = {
+      bathroomType: null,
+      timeline: null,
+      ownership: null,
+      budget: null,
+      firstName: '',
+      suburb: '',
+      phone: '',
+      email: ''
+    };
+
+    // step history for back navigation
+    let navHistory = [0];
+
+    // Progress % per step
+    const PROGRESS = { 1: 16, 2: 32, 3: 48, 4: 64, 5: 80, 6: 96 };
+    // Next step per answer field
+    const NEXT_STEP = { bathroomType: 2, timeline: 3, ownership: 4, budget: 5 };
+
+    // ── Navigation ──
+    function showStep(id, direction) {
+      const prevEl = document.querySelector('.step.active');
+      const nextId = 'step-' + id;
+      const nextEl = document.getElementById(nextId);
+      if (!nextEl || nextEl === prevEl) return;
+
+      if (prevEl) {
+        prevEl.classList.remove('active', 'anim-forward', 'anim-back');
+      }
+
+      nextEl.classList.remove('anim-forward', 'anim-back');
+      nextEl.classList.add('active', direction === 'back' ? 'anim-back' : 'anim-forward');
+
+      updateUI(id);
+      // Scroll to top of step
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    function advance(stepId) {
+      navHistory.push(stepId);
+      showStep(stepId, 'forward');
+    }
+
+    function goBack() {
+      if (navHistory.length <= 1) return;
+      navHistory.pop();
+      const prev = navHistory[navHistory.length - 1];
+      showStep(prev, 'back');
+
+      // Restore budget options if going back to step 4
+      if (prev === 4) {
+        document.getElementById('budgetOpts').style.display = 'flex';
+        document.getElementById('budgetNote').style.display = 'none';
+      }
+    }
+
+    function updateUI(step) {
+      const topBar = document.getElementById('topBar');
+      const fill = document.getElementById('progressFill');
+      const counter = document.getElementById('stepCounter');
+      const backBtn = document.getElementById('backBtn');
+
+      const isQ = typeof step === 'number' && step >= 1 && step <= 6;
+
+      topBar.style.display = (isQ || step === 'disqualify') ? 'block' : 'none';
+      if (!isQ) return;
+
+      fill.style.width = (PROGRESS[step] || 0) + '%';
+      counter.textContent = `Step ${step} of 6`;
+      backBtn.style.visibility = navHistory.length > 1 ? 'visible' : 'hidden';
+    }
+
+    // ── Option selection (choice questions) ──
+    function selectOpt(btn) {
+      const field = btn.dataset.field;
+      const value = btn.dataset.value;
+      answers[field] = value;
+
+      // Highlight selection
+      btn.closest('.opts').querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+      btn.classList.add('selected');
+
+      // Renter → disqualify
+      if (field === 'ownership' && value === 'tenant') {
+        setTimeout(() => advance('disqualify'), 380);
+        return;
+      }
+
+      const next = NEXT_STEP[field];
+      if (next) setTimeout(() => advance(next), 380);
+    }
+
+    // ── Budget (with soft filter for low budgets) ──
+    function selectBudget(btn, value) {
+      answers.budget = value;
+      btn.closest('.opts').querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+      btn.classList.add('selected');
+
+      if (value === 'under-10k') {
+        setTimeout(() => {
+          document.getElementById('budgetOpts').style.display = 'none';
+          document.getElementById('budgetNote').style.display = 'block';
+        }, 380);
+      } else {
+        setTimeout(() => advance(5), 380);
+      }
+    }
+
+    function budgetContinue() {
+      advance(5);
+    }
+
+    // ── Step 5: Name + suburb ──
+    function step5Next() {
+      const fn = document.getElementById('iFirstName').value.trim();
+      const sub = document.getElementById('iSuburb').value.trim();
+      let ok = true;
+
+      if (!fn) {
+        document.getElementById('iFirstName').classList.add('err');
+        document.getElementById('errFirstName').classList.add('show');
+        ok = false;
+      } else {
+        document.getElementById('iFirstName').classList.remove('err');
+        document.getElementById('errFirstName').classList.remove('show');
+      }
+
+      if (!sub) {
+        document.getElementById('iSuburb').classList.add('err');
+        document.getElementById('errSuburb').classList.add('show');
+        ok = false;
+      } else {
+        document.getElementById('iSuburb').classList.remove('err');
+        document.getElementById('errSuburb').classList.remove('show');
+      }
+
+      if (!ok) return;
+
+      answers.firstName = fn;
+      answers.suburb = sub;
+
+      // Personalise step 6 heading
+      document.getElementById('h2Step6').textContent = `Last step, ${fn} — how do we reach you?`;
+
+      advance(6);
+    }
+
+    // ── Step 6: Submit ──
+    function submitForm() {
+      const phone = document.getElementById('iPhone').value.trim();
+      const email = document.getElementById('iEmail').value.trim();
+      let ok = true;
+
+      if (!phone) {
+        document.getElementById('iPhone').classList.add('err');
+        document.getElementById('errPhone').classList.add('show');
+        ok = false;
+      } else {
+        document.getElementById('iPhone').classList.remove('err');
+        document.getElementById('errPhone').classList.remove('show');
+      }
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById('iEmail').classList.add('err');
+        document.getElementById('errEmail').classList.add('show');
+        ok = false;
+      } else {
+        document.getElementById('iEmail').classList.remove('err');
+        document.getElementById('errEmail').classList.remove('show');
+      }
+
+      if (!ok) return;
+
+      answers.phone = phone;
+      answers.email = email;
+
+      // ── Fire Meta pixel Lead event ──
+      // if (typeof fbq !== 'undefined') { fbq('track', 'Lead'); }
+
+      // ── Fire GTM event ──
+      // if (typeof dataLayer !== 'undefined') { dataLayer.push({ event: 'lead_submitted', ...answers }); }
+
+      window.location.href = 'thankyou.html?' + new URLSearchParams({ name: answers.firstName }).toString();
+    }
+
+    // Clear error on input change
+    ['iFirstName','iSuburb','iPhone','iEmail'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('input', () => {
+        el.classList.remove('err');
+        const err = document.getElementById('err' + id.charAt(1).toUpperCase() + id.slice(2));
+        if (err) err.classList.remove('show');
+      });
+    });
+
+    // Initial UI state
+    updateUI(0);
+  </script>
+
+</body>
+</html>

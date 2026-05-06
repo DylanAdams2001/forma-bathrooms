@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're Booked In — Forma Bathrooms</title>
+  <meta name="description" content="Your free bathroom consultation is confirmed. Here's what happens next." />
+
+  <!-- PIXEL -->
+
+  <!-- GTM -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #1C1C1C;
+      --white: #F9F7F4;
+      --brass: #C9A84C;
+      --brass-dark: #a88930;
+      --mid-grey: #6B6B6B;
+      --light-grey: #E8E4DF;
+      --card-bg: #FFFFFF;
+      --shadow: 0 4px 24px rgba(28,28,28,0.08);
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(249,247,244,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--light-grey);
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+    .logo span { color: var(--brass); }
+
+    .btn {
+      display: inline-block;
+      background: var(--brass);
+      color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn:hover { background: var(--brass-dark); transform: translateY(-1px); }
+
+    /* ── PAGE ── */
+    .page {
+      padding-top: 64px;
+      min-height: 100vh;
+    }
+
+    /* ── HERO BAND ── */
+    .ty-hero {
+      background: var(--charcoal);
+      padding: 72px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .ty-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.1) 0%, transparent 60%);
+    }
+
+    .success-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.35);
+      color: var(--brass);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .success-badge svg { width: 14px; height: 14px; }
+
+    .ty-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .ty-hero h1 .name {
+      color: var(--brass);
+    }
+
+    .ty-hero p {
+      font-size: 1.1rem;
+      color: rgba(249,247,244,0.7);
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* ── NEXT STEPS ── */
+    .next-steps {
+      padding: 72px 24px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .steps-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .next-steps h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+    .steps-list::before {
+      content: '';
+      position: absolute;
+      left: 23px;
+      top: 40px;
+      bottom: 40px;
+      width: 2px;
+      background: var(--light-grey);
+    }
+
+    .step-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 20px 0;
+      position: relative;
+    }
+
+    .step-num {
+      width: 48px;
+      height: 48px;
+      background: var(--brass);
+      color: var(--charcoal);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-body h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      padding-top: 10px;
+    }
+    .step-body p {
+      font-size: 0.95rem;
+      color: var(--mid-grey);
+      line-height: 1.55;
+    }
+
+    /* ── VIDEO PLACEHOLDER ── */
+    .video-section {
+      padding: 0 24px 80px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .video-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .video-intro {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .video-sub {
+      text-align: center;
+      color: var(--mid-grey);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+
+    .video-placeholder {
+      background: var(--charcoal);
+      border-radius: 16px;
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .video-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);
+    }
+    .video-play {
+      width: 72px;
+      height: 72px;
+      background: rgba(201,168,76,0.15);
+      border: 2px solid rgba(201,168,76,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .video-play svg { width: 28px; height: 28px; color: var(--brass); margin-left: 4px; }
+    .video-placeholder p {
+      color: rgba(249,247,244,0.6);
+      font-size: 0.9rem;
+      text-align: center;
+      max-width: 320px;
+      padding: 0 24px;
+      line-height: 1.5;
+      position: relative;
+    }
+    .video-hint {
+      font-size: 0.75rem;
+      color: rgba(249,247,244,0.35) !important;
+      font-style: italic;
+    }
+
+    /* ── CLOSING ── */
+    .closing {
+      background: var(--charcoal);
+      padding: 64px 24px;
+      text-align: center;
+    }
+    .closing p {
+      font-size: 1.15rem;
+      color: rgba(249,247,244,0.8);
+      max-width: 520px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+      font-style: italic;
+    }
+    .closing-name {
+      font-weight: 600;
+      color: var(--white);
+      font-style: normal !important;
+      display: block;
+      margin-top: 16px;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111111;
+      color: rgba(249,247,244,0.5);
+      text-align: center;
+      padding: 20px;
+      font-size: 0.85rem;
+    }
+    footer a { color: rgba(249,247,244,0.6); text-decoration: none; }
+    footer a:hover { color: var(--brass); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up-delay-1 { transition-delay: 0.1s; }
+    .fade-up-delay-2 { transition-delay: 0.2s; }
+    .fade-up-delay-3 { transition-delay: 0.3s; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo">Forma <span>Bathrooms</span></a>
+    <a href="index.html" class="btn">← Back to Home</a>
+  </header>
+
+  <div class="page">
+
+    <!-- HERO BAND -->
+    <div class="ty-hero">
+      <div class="success-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+        </svg>
+        Request received
+      </div>
+      <h1>You're all booked in, <span class="name" id="firstName">there</span>.</h1>
+      <p>Here's what happens next:</p>
+    </div>
+
+    <!-- NEXT STEPS -->
+    <div class="next-steps">
+      <span class="steps-label fade-up">What to expect</span>
+      <h2 class="fade-up fade-up-delay-1">Three simple next steps</h2>
+
+      <div class="steps-list">
+        <div class="step-item fade-up fade-up-delay-1">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Confirmation SMS within the hour</h3>
+            <p>You'll receive a text message confirming your request and we'll be in touch shortly to lock in a time that works for you.</p>
+          </div>
+        </div>
+        <div class="step-item fade-up fade-up-delay-2">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>We come to your home</h3>
+            <p>One of our team visits at the agreed time — no obligation, just an honest conversation about your space and what's possible.</p>
+          </div>
+        </div>
+        <div class="step-item fade-up fade-up-delay-3">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>Written quote within 48 hours</h3>
+            <p>A detailed, fixed-price quote will be with you within 48 hours of the visit. No pressure. Take your time to decide.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO PLACEHOLDER -->
+    <div class="video-section fade-up">
+      <span class="video-label">A quick word from the team</span>
+      <p class="video-intro">Meet the people behind Forma</p>
+      <p class="video-sub">We'd love to introduce ourselves before we arrive.</p>
+
+      <div class="video-placeholder">
+        <div class="video-play">
+          <!-- Play icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </div>
+        <p>&#127909; Add a short 30-second intro video here — film on your phone, introduce yourself, build trust before the visit</p>
+        <p class="video-hint">Replace this placeholder with an embedded YouTube or Vimeo video</p>
+      </div>
+    </div>
+
+    <!-- CLOSING -->
+    <div class="closing fade-up">
+      <p>
+        "We're looking forward to meeting you and seeing what we can do with your space."
+        <span class="closing-name">— The Forma Bathrooms Team</span>
+      </p>
+      <a href="index.html" class="btn">← Back to Home</a>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2024 Forma Bathrooms | Melbourne, VIC | <a href="#">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    // Read first name from URL params
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name');
+    if (name) {
+      document.getElementById('firstName').textContent = name;
+      document.title = `You're Booked In, ${name} — Forma Bathrooms`;
+    }
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

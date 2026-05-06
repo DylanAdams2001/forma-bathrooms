@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forma Bathrooms — Melbourne's Fixed-Price Bathroom Renovation Specialists</title>
+  <meta name="description" content="Book a free in-home consultation with Forma Bathrooms. Fixed-price quotes delivered within 48 hours. Melbourne-wide." />
+
+  <!-- PIXEL -->
+
+  <!-- GTM -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #1C1C1C;
+      --white: #F9F7F4;
+      --brass: #C9A84C;
+      --brass-dark: #a88930;
+      --mid-grey: #6B6B6B;
+      --light-grey: #E8E4DF;
+      --card-bg: #FFFFFF;
+      --shadow: 0 4px 24px rgba(28,28,28,0.08);
+      --shadow-hover: 0 8px 32px rgba(28,28,28,0.14);
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(249,247,244,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--light-grey);
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+    .logo span { color: var(--brass); }
+
+    .btn {
+      display: inline-block;
+      background: var(--brass);
+      color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .btn:hover { background: var(--brass-dark); transform: translateY(-1px); }
+    .btn-large {
+      font-size: 1rem;
+      padding: 16px 32px;
+      border-radius: 10px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 64px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('Assets/Bathroom Asset 1.jpg');
+      background-size: cover;
+      background-position: right center;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(28,28,28,0.72) 0%, rgba(28,28,28,0.45) 60%, rgba(28,28,28,0.3) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      padding: 48px 24px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    @media (min-width: 768px) { .hero-content { text-align: left; margin: 0 64px; } }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(201,168,76,0.2);
+      border: 1px solid rgba(201,168,76,0.5);
+      color: var(--brass);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 36px;
+      font-weight: 300;
+      max-width: 520px;
+    }
+    @media (min-width: 768px) { .hero p { margin-left: 0; } }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+      justify-content: center;
+    }
+    @media (min-width: 768px) { .hero-badges { justify-content: flex-start; } }
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.8rem;
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+    .badge svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 24px; }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    /* ── PAIN SECTION ── */
+    .pain { background: var(--charcoal); color: var(--white); }
+    .pain h2 { color: var(--white); }
+    .pain .section-label { color: var(--brass); }
+
+    .pain-layout {
+      display: grid;
+      gap: 48px;
+      align-items: center;
+    }
+    @media (min-width: 768px) { .pain-layout { grid-template-columns: 1fr 1fr; } }
+
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pain-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+    .pain-check {
+      width: 22px;
+      height: 22px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .pain-check svg { width: 12px; height: 12px; color: var(--brass); }
+
+    .pain-close {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--brass);
+      margin-top: 28px;
+      font-style: italic;
+    }
+
+    .pain-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .pain-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ── PROMISES ── */
+    .promises-grid {
+      display: grid;
+      gap: 24px;
+      margin-top: 48px;
+    }
+    @media (min-width: 640px) { .promises-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .promise-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .promise-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+
+    .promise-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(201,168,76,0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .promise-icon svg { width: 24px; height: 24px; color: var(--brass); }
+
+    .promise-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+    .promise-card p {
+      font-size: 0.95rem;
+      color: var(--mid-grey);
+      line-height: 1.6;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: var(--charcoal); color: var(--white); }
+    .how h2 { color: var(--white); }
+    .how .section-label { color: var(--brass); }
+
+    .steps {
+      display: grid;
+      gap: 0;
+      margin-top: 48px;
+      position: relative;
+    }
+    @media (min-width: 768px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+
+    .step {
+      padding: 36px 32px;
+      position: relative;
+    }
+    @media (min-width: 768px) {
+      .step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 52px;
+        right: -1px;
+        width: 1px;
+        height: 60px;
+        background: rgba(249,247,244,0.1);
+      }
+    }
+
+    .step-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--brass);
+      line-height: 1;
+      margin-bottom: 16px;
+      letter-spacing: -0.05em;
+    }
+    .step h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+    .step p { font-size: 0.95rem; color: rgba(249,247,244,0.65); line-height: 1.6; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid {
+      display: grid;
+      gap: 24px;
+      margin-top: 48px;
+    }
+    @media (min-width: 640px) { .testimonials-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .testimonial-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .stars svg { width: 18px; height: 18px; fill: var(--brass); color: var(--brass); }
+
+    .testimonial-card blockquote {
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: var(--mid-grey);
+    }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      background: linear-gradient(135deg, #1C1C1C 0%, #2a2a2a 100%);
+      color: var(--white);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(201,168,76,0.08) 0%, transparent 70%);
+    }
+    .final-cta h2 { color: var(--white); position: relative; }
+    .final-cta p { color: rgba(249,247,244,0.7); font-size: 1.1rem; margin-bottom: 36px; position: relative; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111111;
+      color: rgba(249,247,244,0.5);
+      text-align: center;
+      padding: 24px;
+      font-size: 0.85rem;
+    }
+    footer a { color: rgba(249,247,244,0.6); text-decoration: none; }
+    footer a:hover { color: var(--brass); }
+
+    /* ── FADE-IN ANIMATION ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up-delay-1 { transition-delay: 0.1s; }
+    .fade-up-delay-2 { transition-delay: 0.2s; }
+    .fade-up-delay-3 { transition-delay: 0.3s; }
+    .fade-up-delay-4 { transition-delay: 0.4s; }
+
+    .text-center { text-align: center; }
+    .mb-4 { margin-bottom: 16px; }
+    .mb-8 { margin-bottom: 32px; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo">Forma <span>Bathrooms</span></a>
+    <a href="funnel.html" class="btn">Book Free Quote</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Melbourne's Fixed-Price Renovation Specialists</div>
+      <h1>It's Time Your Bathroom Caught Up With The Rest Of Your Home.</h1>
+      <p>Book a free in-home consultation and get a detailed written quote within 48 hours. Fixed price. No obligation. Melbourne-wide.</p>
+      <a href="funnel.html" class="btn btn-large">Book My Free Quote &rarr;</a>
+      <div class="hero-badges">
+        <span class="badge">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          Fixed-price guarantee
+        </span>
+        <span class="badge">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Quote in 48 hours
+        </span>
+        <span class="badge">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Melbourne-wide
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN SECTION -->
+  <section class="pain">
+    <div class="container">
+      <div class="pain-layout">
+        <div>
+          <span class="section-label fade-up">Sound familiar?</span>
+          <h2 class="fade-up fade-up-delay-1">We've heard it all before.</h2>
+          <ul class="pain-list">
+            <li class="fade-up fade-up-delay-1">
+              <span class="pain-check">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              The bathroom is the one room you avoid showing guests
+            </li>
+            <li class="fade-up fade-up-delay-2">
+              <span class="pain-check">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              It still looks exactly like it did when you moved in
+            </li>
+            <li class="fade-up fade-up-delay-3">
+              <span class="pain-check">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              You've been meaning to do something about it for years
+            </li>
+            <li class="fade-up fade-up-delay-4">
+              <span class="pain-check">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              You just don't know where to start or who to trust
+            </li>
+          </ul>
+          <p class="pain-close fade-up">That's exactly why we built Forma.</p>
+        </div>
+        <div class="pain-image fade-up">
+          <img src="Assets/Bathroom Asset 3.png" alt="Outdated bathroom before renovation" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREE PROMISES -->
+  <section>
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label fade-up">Our promises</span>
+        <h2 class="fade-up fade-up-delay-1">What makes Forma different</h2>
+      </div>
+      <div class="promises-grid">
+        <div class="promise-card fade-up fade-up-delay-1">
+          <div class="promise-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
+          <h3>Fixed-Price Guarantee</h3>
+          <p>Your written quote is your final price. If we go over, we cover the difference. No surprises, ever.</p>
+        </div>
+        <div class="promise-card fade-up fade-up-delay-2">
+          <div class="promise-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+            </svg>
+          </div>
+          <h3>Clean Site Every Day</h3>
+          <p>We clean up fully at the end of every working day. Your home stays liveable throughout the entire renovation.</p>
+        </div>
+        <div class="promise-card fade-up fade-up-delay-3">
+          <div class="promise-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h3>10-Day Completion Promise</h3>
+          <p>Most bathrooms are completed in 10 business days. If we run over, we discount $500 for every day late.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label fade-up">Simple process</span>
+        <h2 class="fade-up fade-up-delay-1">Three simple steps</h2>
+      </div>
+      <div class="steps">
+        <div class="step fade-up fade-up-delay-1">
+          <div class="step-number">01</div>
+          <h3>Book online</h3>
+          <p>Takes 60 seconds. Tell us a little about your bathroom and when suits you best.</p>
+        </div>
+        <div class="step fade-up fade-up-delay-2">
+          <div class="step-number">02</div>
+          <h3>We come to you</h3>
+          <p>One of our team visits your home, measures up, and listens to exactly what you want.</p>
+        </div>
+        <div class="step fade-up fade-up-delay-3">
+          <div class="step-number">03</div>
+          <h3>Get your written quote</h3>
+          <p>Detailed, fixed-price quote delivered within 48 hours. Zero obligation to proceed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section>
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label fade-up">Real homeowners</span>
+        <h2 class="fade-up fade-up-delay-1">Trusted by Melbourne homeowners</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-up fade-up-delay-1">
+          <div class="stars">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote>"Placeholder testimonial — replace with first real customer review."</blockquote>
+          <p class="testimonial-name">Sarah M., Hawthorn</p>
+        </div>
+        <div class="testimonial-card fade-up fade-up-delay-2">
+          <div class="stars">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote>"Placeholder testimonial — replace with first real customer review."</blockquote>
+          <p class="testimonial-name">James T., Brighton</p>
+        </div>
+        <div class="testimonial-card fade-up fade-up-delay-3">
+          <div class="stars">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote>"Placeholder testimonial — replace with first real customer review."</blockquote>
+          <p class="testimonial-name">Rachel K., Glen Waverley</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container text-center">
+      <span class="section-label fade-up">No pressure, ever</span>
+      <h2 class="fade-up fade-up-delay-1">Ready for a bathroom you're proud of?</h2>
+      <p class="fade-up fade-up-delay-2">It starts with a free, no-pressure conversation. We come to you.</p>
+      <a href="funnel.html" class="btn btn-large fade-up fade-up-delay-3">Book My Free In-Home Quote &rarr;</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Forma Bathrooms | Melbourne, VIC | <a href="#">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
