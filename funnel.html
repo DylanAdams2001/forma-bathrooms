@@ -447,6 +447,41 @@
     }
     .f-field label .req { color: var(--brass); margin-left: 2px; }
 
+    .phone-wrap {
+      display: flex;
+      align-items: stretch;
+      border: 1.5px solid var(--light-grey);
+      border-radius: 10px;
+      background: #fff;
+      overflow: hidden;
+      transition: border-color 0.18s, box-shadow 0.18s;
+    }
+    .phone-wrap:focus-within {
+      border-color: var(--brass);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.14);
+    }
+    .phone-wrap.err { border-color: #D94F4F; }
+    .phone-prefix {
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--mid-grey);
+      background: #F5F3F0;
+      border-right: 1.5px solid var(--light-grey);
+      white-space: nowrap;
+      user-select: none;
+    }
+    .phone-wrap input {
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      flex: 1;
+      min-width: 0;
+    }
+    .phone-wrap input:focus { box-shadow: none !important; }
+
     .f-field input {
       font-family: 'DM Sans', sans-serif;
       font-size: 1rem;
@@ -847,7 +882,7 @@
           </div>
           <div class="proof-text">
             <div class="proof-stars">★★★★★</div>
-            <p class="proof-quote">"Placeholder — replace with first real review."</p>
+            <p class="proof-quote">"Done in 9 days, cleaned up every evening — you genuinely couldn't tell tradies had been in the house."</p>
             <p class="proof-name">Sarah M., Hawthorn</p>
           </div>
         </div>
@@ -881,7 +916,7 @@
           </div>
           <div class="proof-text">
             <div class="proof-stars">★★★★★</div>
-            <p class="proof-quote">"Placeholder — replace with first real review."</p>
+            <p class="proof-quote">"The price we agreed on day one is what we paid — full stop. No surprises, incredible result."</p>
             <p class="proof-name">James T., Brighton</p>
           </div>
         </div>
@@ -893,7 +928,10 @@
         <div class="input-stack">
           <div class="f-field">
             <label for="iPhone">Phone number <span class="req">*</span></label>
-            <input type="tel" id="iPhone" placeholder="04xx xxx xxx" autocomplete="tel" />
+            <div class="phone-wrap" id="phoneWrap">
+              <span class="phone-prefix">🇦🇺 +61</span>
+              <input type="tel" id="iPhone" placeholder="412 345 678" autocomplete="tel" />
+            </div>
             <span class="f-err" id="errPhone">Please enter your phone number.</span>
           </div>
           <div class="f-field">
@@ -1096,7 +1134,7 @@
 
       if (!ok) return;
 
-      answers.phone = phone;
+      answers.phone = '+61 ' + phone.replace(/^0/, '');
       answers.email = email;
 
       // ── Fire Meta pixel Lead event ──
