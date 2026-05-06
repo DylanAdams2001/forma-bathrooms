@@ -250,50 +250,8 @@
       margin-bottom: 24px;
     }
 
-    .video-placeholder {
-      background: var(--charcoal);
-      border-radius: 16px;
-      aspect-ratio: 16/9;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    .video-placeholder::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);
-    }
-    .video-play {
-      width: 72px;
-      height: 72px;
-      background: rgba(201,168,76,0.15);
-      border: 2px solid rgba(201,168,76,0.4);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .video-play svg { width: 28px; height: 28px; color: var(--brass); margin-left: 4px; }
-    .video-placeholder p {
-      color: rgba(249,247,244,0.6);
-      font-size: 0.9rem;
-      text-align: center;
-      max-width: 320px;
-      padding: 0 24px;
-      line-height: 1.5;
-      position: relative;
-    }
-    .video-hint {
-      font-size: 0.75rem;
-      color: rgba(249,247,244,0.35) !important;
-      font-style: italic;
+    .video-section iframe {
+      border-radius: 12px;
     }
 
     /* ── CLOSING ── */
@@ -401,16 +359,7 @@
       <p class="video-intro">Meet the people behind Forma</p>
       <p class="video-sub">We'd love to introduce ourselves before we arrive.</p>
 
-      <div class="video-placeholder">
-        <div class="video-play">
-          <!-- Play icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M8 5v14l11-7z"/>
-          </svg>
-        </div>
-        <p>&#127909; Add a short 30-second intro video here — film on your phone, introduce yourself, build trust before the visit</p>
-        <p class="video-hint">Replace this placeholder with an embedded YouTube or Vimeo video</p>
-      </div>
+      <div style="position: relative; padding-bottom: 56.2500%; height: 0;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" src="https://www.tella.tv/video/vid_cmotsmmvd00d604l15t4q9nt4/embed?b=1&title=0&a=1&loop=0&t=0&muted=0&wt=0&o=1" allow="autoplay; fullscreen" allowtransparency></iframe></div>
     </div>
 
     <!-- CLOSING -->
